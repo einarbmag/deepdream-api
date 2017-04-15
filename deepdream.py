@@ -95,7 +95,7 @@ def deepdream(net, base_img, iter_n=10, octave_n=4, octave_scale=1.4, end='incep
     return deprocess(net, src.data[0])
 
 
-def transform(img):
+def transform(img, iter_n=10, octave_n=4, octave_scale=1.4, end='inception_4c/output'):
     maxwidth = 512
     width = img.size[0]
 
@@ -107,7 +107,7 @@ def transform(img):
     img = np.float32(img)
 
 
-    output = deepdream(net, img, end="inception_4c/output")
+    output = deepdream(net, img, iter_n=int(iter_n), octave_n=int(octave_n), octave_scale=float(octave_scale), end=end)
     #'inception_3b/5x5_reduce'
     #'conv2/3x3'
 

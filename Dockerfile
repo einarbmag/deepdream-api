@@ -2,9 +2,7 @@ FROM visionai/clouddream
 
 RUN pip install flask
 
-RUN cd /usr/src
-RUN git clone https://github.com/einarbmag/deepdream-api.git
-RUN cd deepdream-api
-RUN export FLASK_APP=server.py
+RUN git clone https://github.com/einarbmag/deepdream-api.git /usr/src/deepdream-api/
+ENV FLASK_APP /usr/src/deepdream-api/server.py
 
 CMD flask run

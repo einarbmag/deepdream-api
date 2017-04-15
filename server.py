@@ -26,11 +26,17 @@ def uploadJPG():
     incoming.save('temp.jpg')
 
     img = PIL.Image.open('temp.jpg')
-    imgout = transform(img)
+    parameters = request.form.to_dict()
+    imgout = transform(img, **parameters)
     imgout.save('output.jpg')
     # time.sleep(0.5)
     return send_file(open('output.jpg', 'rb'), mimetype='image/jpg')
- 
+
+@app.route('/uploadtest', methods=['POST'])
+def uploadtest():
+    print(request.files)
+    print(request.form.to_dict())
+    return 'thanks'
     
 app.run(host= '0.0.0.0')  
 
