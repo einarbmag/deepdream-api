@@ -95,8 +95,7 @@ def deepdream(net, base_img, iter_n=10, octave_n=4, octave_scale=1.4, end='incep
     return deprocess(net, src.data[0])
 
 
-def transform(img, iter_n=10, octave_n=4, octave_scale=1.4, end='inception_4c/output'):
-    maxwidth = 512
+def transform(img, maxwidth=512, iter_n=10, octave_n=4, octave_scale=1.4, end='inception_4c/output'):
     width = img.size[0]
 
     if width > maxwidth:
